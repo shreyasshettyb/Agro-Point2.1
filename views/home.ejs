@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/App.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Agro-Point</title>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+      Agro-Point
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item " style="text-align:center; ">
+    <a class="nav-link" id="profile" href="/api/profile" style="color:#20ff00cf;">Namasthe <%=user.name%> !</a>
+        </li>
+        <li class="nav-item " style="text-align:center; ">
+            <a class="nav-link" id="profile" href="#aboutus" style="color:#20ff00cf;">About Us</a>
+                </li>
+    <li class="nav-item"style="text-align:center">
+    <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
+    </li>
+    </ul>
+      </div>
+      
+  </nav>
+<body>
+<section class='banner'>
+        <div class="container bannerImg">
+         <!-- <img src="https://png.pngtree.com/background/20210710/original/pngtree-modern-agriculture-cartoon-peasant-agriculture-development-poster-background-material-picture-image_1005372.jpg" alt="Farmer Trust"  /> -->
+        <h1>“Agriculture reviews that Point you in the right direction”</h1>
+        <button onclick="location.href = '/api/category';" style='font-size:24px'>
+            Explore Catagories <i class="fas fa-arrow-circle-right"></i> </button>
+        </div>
+  </section>
+  <section class="container">
+  <div id="aboutus" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+  <h3>About Us:</h3>
+    <h5>Welcome to our agricultural review site! We are a group of students passionate about all things agriculture. We created this site as a resource for people looking for reliable information and honest reviews about various agricultural products and practices.
+
+.We have a wealth of knowledge and experience to share with our readers.
+
+We understand the importance of staying up-to-date on the latest research and innovations in the agricultural industry. That's why we strive to provide accurate, well-researched content that our readers can trust.
+
+Thank you for visiting our site. We hope you find it informative and helpful as you navigate the world of agriculture.</h5>
+    
+  </div>
+  </section>
+  <div id="footer"></div>
+        <footer>
+          <div style="text-align: center; margin-top: 2%;">
+            <p>Copyright ©2023 Agro-Point</p>
+          </div>
+        </footer>
+  </div>
+</body>
+</html>

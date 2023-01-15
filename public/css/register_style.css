@@ -1,0 +1,76 @@
+body {
+  color: #000;
+  height: auto;    
+  background: -webkit-gradient(linear, left top, left bottom, from(#80FF72), to(#F8EF42) );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 100vh;
+  overflow: auto;
+}
+@media (max-width: 576px) { 
+  body {
+  height: auto;
+} 
+}
+
+.nav-item a:hover {
+  background-color: rgb(100, 238, 82)!important;
+  color: black!important;
+  border-radius: 30px;
+  font-weight: bolder;
+}
+.card {
+  padding: 30px 40px;
+  margin-bottom: 60px;
+  border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.blue-text {
+  color: #00BCD4
+}
+
+.form-control-label {
+  margin-bottom: 0
+}
+
+input,
+textarea,
+button {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300
+}
+
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00BCD4;
+  outline-width: 0;
+  font-weight: 400
+}
+
+.btn-block {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer
+}
+
+.btn-block:hover {
+  color: #fff !important
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0
+}

@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: linear-gradient(#80FF72,#F8EF42);
+    min-height: 100vh;
+    overflow: auto;
+}
+
+#name {
+    height: 400px;
+    background-color: aliceblue;
+    width: 100%;
+    align-self: center;
+}
+
+#name p {
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 40px;
+    color: black;
+}
+
+#products h3 {
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.nav-item a:hover {
+    background-color: rgb(100, 238, 82)!important;
+    color: black!important;
+    border-radius: 30px;
+    font-weight: bolder;
+}
+
+
+table th,
+td {
+    border-radius: 4px;
+}
+
+table {
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #6ae448;
+    padding: 10px;
+    color: #000000;
+    font-weight: bolder;
+}
+
+td {
+    background-color: #d1ddced4;
+    padding: 15px;
+    text-align: center;
+    vertical-align: center;
+}

@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/css/profile.css">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+<title>Agro-Point</title>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+      Agro-Point
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item ">
+    <a class="nav-link" id="profile" href="" style="color:#20ff00cf;">Namasthe <%=admin.name%> !</a>
+        </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
+    </li>
+    </ul>
+      </div>
+      
+  </nav>
+  <body>
+<div id="products">
+    <br>
+    <h3>PRODUCTS</h3>
+    <br>
+    <div class="container table-responsive">
+    <div style="margin-right: 20px;" >
+        <form method="GET" action="/api/adminControl/add" id="addProductForm">
+            <button class="submi btn btn-success btn-lg float-right" type="submit" name="submit" value="Add Product"><i class="fas fa-plus"></i></button>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th  scope="col">Product Name</th>
+            <th  scope="col">Category</th>
+            <th  scope="col">Release Year</th>
+            <th  scope="col">Official Link</th>
+            <th  scope="col">Rating</th>
+            <th  scope="col">Description</th>
+            <th  scope="col">Update</th>
+            <th  scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach((product) => { %>
+        <div scope="row">
+            <tr>
+                <td><img src="/images/<%= product.img %>" width="50px" height="50px" alt=""></td>
+                <td><%= product.name%></td>
+                <td><%= product.category_name %> </td>
+                <td><%= product.release_year%></td>
+                <td ><%= product.official_link%></td>
+                <td><%= product.rating%></td>
+                <td><%= product.description%></td>
+                <td>
+                    <button type="button" class="btn btn-success" onclick="location.href = '/api/adminControl/update/<%=product.pid%>';">
+                        Update
+                    </button>                
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" onclick="location.href = '/api/adminControl/update/<%=product.pid%>';">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </div>
+        <% });%>
+    </tbody>    
+    </table>
+    </div>
+</div>
+<div id="footer"></div>
+        <footer>
+          <div style="text-align: center; margin-top: 2%;">
+            <p>Copyright ©2023 Agro-Point</p>
+          </div>
+        </footer>
+  </div>
+</body>

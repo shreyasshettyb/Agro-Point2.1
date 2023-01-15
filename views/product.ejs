@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro-Point</title>
+    <link rel="stylesheet" href="/css/register_style.css">
+</head>
+<style>
+    body {
+        min-height: 100vh;
+        overflow: auto;
+        /* height: auto;
+        background-color: #80FF72;
+        background-image: none; */
+    }
+    .card{
+      margin-bottom: 0;
+    }
+  </style>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/api/user">
+      <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+      Agro-Point
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item " style="text-align:center; ">
+    <a class="nav-link" id="profile" href="/api/profile" style="color:#20ff00cf;">Namasthe <%=userName%> !</a>
+        </li>
+    <li class="nav-item"style="text-align:center">
+    <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
+    </li>
+    </ul>
+      </div>
+      
+  </nav>
+<body>
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <h2><%= name %></h2>
+    <div class="products"> 
+         <div class="row">   
+        <div class=" card col-lg-6 col-sm-12">
+            <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-12 "><img src="/images/<%= img %>" width="100%"  style="vertical-align: text-top;">  </div>
+            </div>
+        </div>    
+            <div class="card col-lg-6 col-sm-12 ">
+                <div class="row ">
+                    <div class="form-group col-sm-7 mr-auto "> <label class="form-control-label px-3"><h4 style="display:inline">Release Year:</h4> <span ><%= release_year %></span></label> </div>
+                    <div class="form-group col-sm-4 ml-auto "> <label class="form-control-label px-3"><h4 style="display:inline">Rating:</h4> <span ><%= rating %></span></label> </div>
+                </div> 
+                <div class="form-group col-sm-auto text-left "> <label class="form-control-label px-3"> <span ><%= description %></span></label> </div>
+                <button style="margin-top:100px" class=" btn-block btn-success" onclick=" window.open('<%= official_link %>', '_blank')">Official Link</button>
+            </div>
+    </div>
+        <hr class="hr" />
+    </div>
+                        <% newComment.forEach((comment) => { %>
+                            <div class="card row col-12">   
+                                    <div class="row justify-content-between">
+                                        <div class="form-group col-sm-12 "> <label class="form-control-label px-3"><h4>Add Your Review:</h4> <span ></span> </label> </div>
+                                        <div class="form-group col-sm-12 ">
+                                        <form method="post" action="/api/comment/addComment/<%= pid %>">
+                                            <div class="row justify-content-between">
+                                                <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3"></label> <input type="text" name="comment" placeholder="Your Comment" required> </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                    <label class="form-control-label px-3"><h4>Your Rating:</h4></label>
+                                                        <select name="rating" id="rating">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                    <div class="form-group col-sm-6"><button class="submit btn-block btn-success" input type="submit" name="submit" value="submit" required> Submit</button> </div>
+                                            </div>
+                            </form>
+                                        </div>
+                        <% });%>
+                        <% oldComment.forEach((comment) => { %>
+                            <div class="card row col-12">   
+                                    <div class="row justify-content-between text-left">
+                                        <div class="form-group col-sm-6 "> <label class="form-control-label px-3"><h4 style="background-color:rgb(93, 243, 73)">Your Review:</h4> <span ></span> </label> </div>
+                                        <div class="form-group col-sm-4 "> <label class="form-control-label px-3"><h4 class="text-right" style="background-color:rgb(93, 243, 73)">Rating: <%= comment.rating %>/5</h4> <span ></span> </label> </div>
+                                    </div>
+                                    <div class="text-left comment">
+                                        <p style="font-style:italic"><%= comment.comment %></p>
+                                        <h6>Reviewed At: <%= comment.createdAt %></h6>
+                                        <button class="col-6 text-center btn-block btn-danger mt-4 ml-auto" onclick="location.href = '/api/comment/deleteComment/<%= pid %>';">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div> 
+                                <hr class="hr" />   
+                        <% });%>
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+            </div>
+            
+            <h4 class="text-center" ><%= commentStatus %></h4>
+            <% comments.forEach((comment) => { %>  
+            <div class="container-fluid mx-auto mb-2">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                        <div class="card row col-12">  
+                                <div class="row justify-content-between text-left">
+                                    <div class="form-group col-sm-6 "> <label class="form-control-label px-3"><h5 style="background-color:yellow">Commented By "<%= comment.name %>"</h5></label> </div>
+                                    <div class="form-group col-sm-4 "> <label class="form-control-label px-3"><h5 style="background-color:yellow">Rating:<%= comment.rating %>/5</h5></label> </div>
+                                </div>
+                                <div class="text-left comment">
+                                    <div class="form-group col-sm-4 ">
+                                    <p style="font-style:italic"><%= comment.comment %></p>
+                                    </div>
+                                    <h6>Reviewed At:"<%= comment.createdAt %>"</h6>
+                                </div>
+                            </div> 
+                             
+                    </div>
+                </div>
+            </div>
+            <% });%>
+            </div>
+            </div>
+        </div></div>  
+
+
+                    </div>
+                </div>
+    <div id="footer"></div>
+        <footer>
+          <div style="text-align: center;">
+            <p>Copyright ©2023 Agro-Point</p>
+          </div>
+        </footer>
+    </div>
+</body>
+</html>

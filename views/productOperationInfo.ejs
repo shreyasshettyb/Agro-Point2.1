@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Agro-Point</title>
+
+<link rel="stylesheet" href="/css/register_style.css">
+<style>
+  body {
+    height: 850px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    Agro-Point
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<section class="container">
+  <div class="productDelete">
+    <div class="container-fluid px-1 py-5 mx-auto">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <div class="card">
+            <% error.forEach((item)=> { %>
+              <h5 style="color: red">
+                <%= item %>
+              </h5>
+              <% });%>
+                <div class="row justify-content-center">
+                  <form action="/api/adminControl/">
+                    <div class=" form-group col-sm-12 mr-5 "><button class="btn-block btn-secondary"
+                        class="submit btn-block btn-danger" type="submit"
+                        onClick="location.href = '/api/adminControl'">Go Back</button></div>
+                  </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

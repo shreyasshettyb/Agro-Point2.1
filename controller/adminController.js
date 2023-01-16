@@ -3,6 +3,7 @@ const asynchandler = require('express-async-handler')
 const Joi = require('joi')
 const path = require('path')
 const connection = require('../config/db')
+const fs = require('fs')
 
 const getinfo = asynchandler(async (req, res) => {
     const error = []
@@ -171,12 +172,26 @@ const deleteProduct = asynchandler(async (req, res) => {
                 })
             })
         }
+
+        const image = results[0].img
+
         connection.query(`delete from products where pid = ${pid}`,
             async (err, results, field) => {
             if (err) {
                 error.push('Product Deletion failed..')
                 return res.status(500).render('productOperationInfo', { o_uid: o_uid, error: error })
             } else {
+                try{
+                    fs.unlinkSync(path.dirname(__dirname) + '\\public\\images\\' + image)
+                }catch(err){
+                    console.log(err.message)
+                    error.push('Server Error')
+                    req.session.destroy(() => {
+                        return res.status(400).render('login', {
+                            error: error
+                        })
+                    })
+                }
                 error.push('Product deleted successfully')
                 return res.status(200).render('productOperationInfo', { o_uid: o_uid, error: error })
             }

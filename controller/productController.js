@@ -25,10 +25,15 @@ const getProduct = asynchandler(async (req, res) => {
                 })
             })
         }
-        if(results1[0].rating == 0 || results1[0].rating == null)
-            results1[0].rating = "Not Rated"
-        else
-            results1[0].rating = `${results1[0].rating}/5`
+
+        // if(results1[0].rating == 0 || results1[0].rating == null)
+        //     results1[0].rating = "Not Rated"
+        // else
+        //     results1[0].rating = `${results1[0].rating}/5`
+        
+        if(results1[0].rating == null)
+            results1[0].rating = 0
+            
         const product = results1[0]
         product.userName = req.session.user.name
 

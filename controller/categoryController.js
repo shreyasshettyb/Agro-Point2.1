@@ -38,12 +38,18 @@ const getProducts = asynchandler(async (req, res) => {
                     }
                     else{
 
+                        // for(let i = 0; i < results2.length; i++){
+                        //     if(results2[i].rating == 0 || results2[i].rating == null)
+                        //         results2[i].rating = 'Not Rated'
+                        //     else
+                        //         results2[i].rating = `${results2[i].rating}/5`
+                        // }
+                        
                         for(let i = 0; i < results2.length; i++){
-                            if(results2[i].rating == 0 || results2[i].rating == null)
-                                results2[i].rating = 'Not Rated'
-                            else
-                                results2[i].rating = `${results2[i].rating}/5`
+                            if(results2[i].rating == null)
+                                results2[i].rating = 0
                         }
+
                         const categoryProducts = { category_name: results1[0].category_name, 
                             desc: results1[0].description,
                             products: results2

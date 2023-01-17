@@ -7,7 +7,12 @@ body{
     min-height: 100vh;
     overflow: auto;
 }
-
+.nav-item a:hover {
+    background-color: rgb(100, 238, 82)!important;
+    color: black!important;
+    border-radius: 30px;
+    font-weight: bolder;
+  }
 #name {
     height: 400px;
     background-color: aliceblue;

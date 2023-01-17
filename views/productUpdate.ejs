@@ -27,78 +27,78 @@
 </nav>
 
 <body>
-  
-<section class="container">
-  <div class="container-fluid px-1 py-5 mx-auto">
-    <div class="row d-flex justify-content-center">
-      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-        <h3>Update/Delete Product</h3>
-        <% error.forEach((item)=> { %>
-          <h5 style="color: red">
-            <%= item %>
-          </h5>
-          <% });%>
-            <div class="card">
-              <form method="post" action="/api/adminControl/update/<%= pid %>">
-                <div class="row justify-content-between text-left">
-                  <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Name<span
-                        class="text-danger"> *</span></label> <input type="text" name="name" placeholder="Name"
-                      value="<%= product.name %>" required> </div>
-                  <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Release
-                      Year<span class="text-danger"> *</span></label> <input type="number" name="release_year"
-                      placeholder="Release Year" value="<%= product.release_year %>" required></p>
-                  </div>
-                </div>
-                <div class="row justify-content-between text-left">
-                  <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Product
-                      Link<span class="text-danger"> *</span></label> <input type="text" name="official_link"
-                      placeholder="Official Link" value="<%= product.official_link %>" required></p>
-                  </div>
-                </div>
-                <div class="row justify-content-between text-left">
-                  <div class="form-group col-sm-12 flex-column d-flex"> <label
-                      class="form-control-label px-3">Description<span class="text-danger"> *</span></label> <input
-                      type="text" name="description" placeholder="Description" value="<%= product.description %>"
-                      required></p>
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-                  <label class="form-control-label px-3">Catagory:</label>
-                  <select name="category_id" id="cid">
-                    <option value=1>Fertilizers</option>
-                    <option value=2>Pesticides</option>
-                    <option value=3>Tools</option>
-                    <option value=4>Seeds</option>
-                    <option value=6>Vehicles</option>
-                    <option value=5>Other</option>
-                  </select>
-                </div>
-                <div class="row justify-content-center">
-                  <!-- <div class="form-group col-sm-6"><p class="submit"><input type="submit" name="submit" value="Register" required></p> </div> -->
-                  <div class="form-group col-sm-4"><button class="submit btn-block btn-success" type="submit"
-                      name="submit" value="Update" required> Update</button> </div>
-              </form>
-              <form method="post" action="/api/adminControl/delete/<%= pid %>">
-                <div class=" form-group col-sm-12 mr-5"><button class="submit btn-block btn-danger" type="submit"
-                    name="submit" value="Delete" required>Delete</button> </div>
-              </form>
-            </div>
-            <div class="row justify-content-center">
-              <form action="/api/adminControl/">
-                <div class=" form-group col-sm-12 mr-5"><button class="btn-block btn-secondary"
-                    class="submit btn-block btn-danger" type="submit" name="submit">Cancel</button></div>
-              </form>
-            </div>
-      </div>
 
+  <section class="container">
+    <div class="container-fluid px-1 py-5 mx-auto">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <h3>Update/Delete Product</h3>
+          <% error.forEach((item)=> { %>
+            <h5 style="color: red">
+              <%= item %>
+            </h5>
+            <% });%>
+              <div class="card">
+                <form method="post" action="/api/adminControl/update/<%= pid %>">
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label
+                        class="form-control-label px-3">Name<span class="text-danger"> *</span></label> <input
+                        type="text" name="name" placeholder="Name" value="<%= product.name %>" required> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Release
+                        Year<span class="text-danger"> *</span></label> <input type="number" name="release_year"
+                        placeholder="Release Year" value="<%= product.release_year %>" required></p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Product
+                        Link<span class="text-danger"> *</span></label> <input type="text" name="official_link"
+                        placeholder="Official Link" value="<%= product.official_link %>" required></p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-12 flex-column d-flex"> <label
+                        class="form-control-label px-3">Description<span class="text-danger"> *</span></label> <input
+                        type="text" name="description" placeholder="Description" value="<%= product.description %>"
+                        required></p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <label class="form-control-label px-3">Catagory:</label>
+                    <select name="category_id" id="cid">
+                      <option value=1>Fertilizers</option>
+                      <option value=2>Pesticides</option>
+                      <option value=3>Tools</option>
+                      <option value=4>Seeds</option>
+                      <option value=6>Vehicles</option>
+                      <option value=5>Other</option>
+                    </select>
+                  </div>
+                  <div class="row justify-content-center">
+                    <!-- <div class="form-group col-sm-6"><p class="submit"><input type="submit" name="submit" value="Register" required></p> </div> -->
+                    <div class="form-group col-sm-4"><button class="submit btn-block btn-success" type="submit"
+                        name="submit" value="Update" required> Update</button> </div>
+                </form>
+                <form method="post" action="/api/adminControl/delete/<%= pid %>">
+                  <div class=" form-group col-sm-12 mr-5"><button class="submit btn-block btn-danger" type="submit"
+                      name="submit" value="Delete" required>Delete</button> </div>
+                </form>
+              </div>
+              <div class="row justify-content-center">
+                <form action="/api/adminControl/">
+                  <div class=" form-group col-sm-12 mr-5"><button class="btn-block btn-secondary"
+                      class="submit btn-block btn-danger" type="submit" name="submit">Cancel</button></div>
+                </form>
+              </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
-<div id="footer"></div>
-        <footer>
-          <div style="text-align: center; margin-top: 2%;">
-            <p>Copyright ©2023 Agro-Point</p>
-          </div>
-        </footer>
+  </section>
+  <div id="footer"></div>
+  <footer>
+    <div style="text-align: center; margin-top: 2%;">
+      <p>Copyright ©2023 Agro-Point</p>
+    </div>
+  </footer>
   </div>
 </body>

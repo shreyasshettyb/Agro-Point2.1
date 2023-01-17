@@ -1,49 +1,55 @@
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Agro-Point</title>
-  <!-- <link rel="stylesheet" href="/css/login_style.css"> -->
-   <link rel="stylesheet" href="/css/register_style.css">
-  <section class="container"></section>
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Agro-Point
-    </a>
-  </nav>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Agro-Point</title>
+<!-- <link rel="stylesheet" href="/css/login_style.css"> -->
+<link rel="stylesheet" href="/css/register_style.css">
+<section class="container"></section>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="/images/new_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Agro-Point
+  </a>
+</nav>
 
-  <div class="container-fluid px-1 py-5 mx-auto">
-    <div class="row d-flex justify-content-center">
-        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-            <h3>Login</h3>
-            <% error.forEach((item) => { %>
-              <h5 style="color: red"><%= item %></h5>
-              <% });%>
-            <div class="card">
-              <form method="POST" action="/api/login" id="loginForm">
-                    <div class="row justify-content-center">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" name="email" placeholder="Email" required> </div>  
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" name="password" placeholder="Password" required> </div>
-                    </div>
-                    <h6>Forgot Password? <a href="forgotPassword">Click Here..</a></h6>
-                    <div class="row justify-content-center">
-                      <div class="row justify-content-center">
-                        <select name="type" id="ptype">
-                          <option value="user">Farmer</option>
-                          <option value="org_user">Organizational User</option>
-                        </select>
-                      </div>
-                  </div>
-                    <div class="row justify-content-center">
-                        <div class="form-group col-sm-6"><button class="submit btn-block btn-primary" type="submit" name="submit" value="Login" required>Login</button> </div>
-                    </div>
-                </form>
-            </div>
-            <div class="login">
-              <h5>New User? <a href="register">Register Here</a></h5>
-            </div> 
-        </div>
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <h3>Login</h3>
+      <% error.forEach((item)=> { %>
+        <h5 style="color: red">
+          <%= item %>
+        </h5>
+        <% });%>
+          <div class="card">
+            <form method="POST" action="/api/login" id="loginForm">
+              <div class="row justify-content-center">
+                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span
+                      class="text-danger"> *</span></label> <input type="email" name="email" placeholder="Email"
+                    required> </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="form-group col-sm-6 flex-column d-flex"> <label
+                    class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input
+                    type="password" name="password" placeholder="Password" required> </div>
+              </div>
+              <h6>Forgot Password? <a href="forgotPassword">Click Here..</a></h6>
+              <div class="row justify-content-center">
+                <div class="row justify-content-center">
+                  <select name="type" id="ptype">
+                    <option value="user">Farmer</option>
+                    <option value="org_user">Organizational User</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="form-group col-sm-6"><button class="submit btn-block btn-primary" type="submit"
+                    name="submit" value="Login" required>Login</button> </div>
+              </div>
+            </form>
+          </div>
+          <div class="login">
+            <h5>New User? <a href="register">Register Here</a></h5>
+          </div>
     </div>
+  </div>
 </div>
-

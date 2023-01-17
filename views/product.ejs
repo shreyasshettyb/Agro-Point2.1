@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro-Point</title>
     <link rel="stylesheet" href="/css/register_style.css">
+    <link rel="stylesheet" href="/css/stars.css">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
 </head>
 <style>
     body {
@@ -56,8 +59,17 @@
         </div>    
             <div class="card col-lg-6 col-sm-12 ">
                 <div class="row ">
-                    <div class="form-group col-sm-7 mr-auto "> <label class="form-control-label px-3"><h4 style="display:inline">Release Year:</h4> <span ><%= release_year %></span></label> </div>
-                    <div class="form-group col-sm-4 ml-auto "> <label class="form-control-label px-3"><h4 style="display:inline">Rating:</h4> <span ><%= rating %></span></label> </div>
+                    <div class="form-group col-sm-6 mr-auto px-0 "> <label class="form-control-label px-3"><h4 style="display:inline">Release Year:</h4> <span ><%= release_year %></span></label> </div>
+                    <div class="form-group col-sm-6 ml-auto px-0"> 
+                        <div class="ratings">
+                            <label class="form-control-label px-3"><h4 style="display:inline">Rating:</h4>
+                            <p>
+                                <% for (var i = 0; i < 5; i++) { %>
+                                    <span class="fa fa-star<%= (i < rating - 0.5)? '' : '-o'%>" style="color:green"></span>
+                                <% } %>
+                            </p>
+                        </div>    
+                    </div>
                 </div> 
                 <div class="form-group col-sm-auto text-left "> <label class="form-control-label px-3"> <span ><%= description %></span></label> </div>
                 <button style="margin-top:100px" class=" btn-block btn-success" onclick=" window.open('<%= official_link %>', '_blank')">Official Link</button>
@@ -75,24 +87,40 @@
                                                 <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3"></label> <input type="text" name="comment" placeholder="Your Comment" required> </div>
                                             </div>
                                             <div class="row justify-content-center">
-                                                    <label class="form-control-label px-3"><h4>Your Rating:</h4></label>
-                                                        <select name="rating" id="rating">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
-                                                    <div class="form-group col-sm-6"><button class="submit btn-block btn-success" input type="submit" name="submit" value="submit" required> Submit</button> </div>
+                                                    <h4 class="mr-3">Your Rating:</h4>
+                                                    <div class="star-rating">
+                                                        <input type="radio" id="5-stars" name="rating" value="5" />
+                                                        <label for="5-stars" class="fa fa-star"></label>
+                                                        <input type="radio" id="4-stars" name="rating" value="4" />
+                                                        <label for="4-stars" class="fa fa-star"></label>
+                                                        <input type="radio" id="3-stars" name="rating" value="3" />
+                                                        <label for="3-stars" class="fa fa-star"></label>
+                                                        <input type="radio" id="2-stars" name="rating" value="2" />
+                                                        <label for="2-stars" class="fa fa-star"></label>
+                                                        <input type="radio" id="1-star" name="rating" value="1" />
+                                                        <label for="1-star" class="fa fa-star"></label>
+                                                      </div>        
                                             </div>
-                            </form>
+                                            <div class="row justify-content-center">
+                                            <div class="form-group col-sm-6"><button class="submit btn-block btn-success" input type="submit" name="submit" value="submit" required> Submit</button> </div>
+                                            </div>    
+                                        </form>
                                         </div>
                         <% });%>
                         <% oldComment.forEach((comment) => { %>
                             <div class="card row col-12">   
                                     <div class="row justify-content-between text-left">
-                                        <div class="form-group col-sm-6 "> <label class="form-control-label px-3"><h4 style="background-color:rgb(93, 243, 73)">Your Review:</h4> <span ></span> </label> </div>
-                                        <div class="form-group col-sm-4 "> <label class="form-control-label px-3"><h4 class="text-right" style="background-color:rgb(93, 243, 73)">Rating: <%= comment.rating %>/5</h4> <span ></span> </label> </div>
+                                        <div class=" col-sm-4 "> <label class="form-control-label px-3"><h4 style="background-color:rgb(93, 243, 73)">Your Review:</h4> <span ></span> </label> </div>
+                                        <div class=" col-sm-4 ml-auto "> 
+                                            <div class="ratings">
+                                                <label class="form-control-label px-3"><h4 style="display:inline;background-color:rgb(93, 243, 73)">Rating:</h4>
+                                                <p>
+                                                    <% for (var i = 0; i < 5; i++) { %>
+                                                        <span class="fa fa-star<%= (i < rating - 0.5)? '' : '-o'%>"></span>
+                                                    <% } %>
+                                                </p>
+                                            </div>    
+                                        </div>
                                     </div>
                                     <div class="text-left comment">
                                         <p style="font-style:italic"><%= comment.comment %></p>
@@ -118,9 +146,14 @@
                     <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                         <div class="card row col-12">  
                                 <div class="row justify-content-between text-left">
-                                    <div class="form-group col-sm-6 "> <label class="form-control-label px-3"><h5 style="background-color:yellow">Commented By "<%= comment.name %>"</h5></label> </div>
-                                    <div class="form-group col-sm-4 "> <label class="form-control-label px-3"><h5 style="background-color:yellow">Rating:<%= comment.rating %>/5</h5></label> </div>
-                                </div>
+                                    <h5 class="col-4" style="background-color:yellow;height:fit-content">Commented By "<%= comment.name %>"</h5> 
+                                            <label class="form-control-label col-sm-4 ml-auto px-3"><h4 style="display:inline;background-color:yellow">Rating:</h4>
+                                            <p>
+                                                <% for (var i = 0; i < 5; i++) { %>
+                                                    <span class="fa fa-star yellow-color<%= (i < rating - 0.5)? '' : '-o'%>" ></span>
+                                                <% } %>
+                                            </p>   
+                                    </div>
                                 <div class="text-left comment">
                                     <div class="form-group col-sm-4 ">
                                     <p style="font-style:italic"><%= comment.comment %></p>

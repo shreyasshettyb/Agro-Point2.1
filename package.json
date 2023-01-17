@@ -19,6 +19,7 @@
     "express-mysql-session": "^2.1.8",
     "express-session": "^1.17.1",
     "fs": "^0.0.1-security",
+    "install": "^0.13.0",
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",

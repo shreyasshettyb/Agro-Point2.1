@@ -3,9 +3,9 @@
 <title>Agro-Point</title>
 <link rel="stylesheet" href="/css/register_style.css">
 <style>
-  body{
-  height: auto;
-  } 
+  body {
+    height: auto;
+  }
 </style>
 
 
@@ -15,69 +15,87 @@
     Agro-Point
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-  <ul class="navbar-nav ml-auto">
-  <li class="nav-item">
-  <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
-  </li>
-  </ul>
-    </div>
-    
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/api/logout" style="color:#20ff00cf">Logout</a>
+      </li>
+    </ul>
+  </div>
+
 </nav>
+
 <body>
-  
-<section class="container">
-  <div class="container-fluid px-1 py-5 mx-auto">
-    <div class="row d-flex justify-content-center">
+
+  <section class="container">
+    <div class="container-fluid px-1 py-5 mx-auto">
+      <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-            <h3>Create Product</h3>
-            <% error.forEach((item) => { %>
-              <h5 style="color: red"><%= item %></h5>
-              <% });%>
-            <div class="card">
-              <form  method="post" action="/api/adminControl/add/" enctype="multipart/form-data">
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product Name<span class="text-danger"> *</span></label> <input type="text" name="name" placeholder="Name"  required> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Release Year<span class="text-danger"> *</span></label> <input type="number" name="release_year" placeholder="Release Year"  required></p> </div>
+          <h3>Create Product</h3>
+          <% error.forEach((item)=> { %>
+            <h5 style="color: red">
+              <%= item %>
+            </h5>
+            <% });%>
+              <div class="card">
+                <form method="post" action="/api/adminControl/add/" enctype="multipart/form-data">
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product
+                        Name<span class="text-danger"> *</span></label> <input type="text" name="name"
+                        placeholder="Name" required> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Release
+                        Year<span class="text-danger"> *</span></label> <input type="number" name="release_year"
+                        placeholder="Release Year" required></p>
                     </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Product Link<span class="text-danger"> *</span></label> <input type="text" name="official_link" placeholder="Official Link"  required></p> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                      <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Image<span class="text-danger"> *</span></label> <input type="file" name="image" required></div>
                   </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Description<span class="text-danger"> *</span></label> <input type="text" name="description" placeholder="Description"  required></p> </div>
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Product
+                        Link<span class="text-danger"> *</span></label> <input type="text" name="official_link"
+                        placeholder="Official Link" required></p>
                     </div>
-                      <div class="row justify-content-center">
-                        <label class="form-control-label px-3">Catagory:</label>
-                        <select name="category_id" id="cid">
-                          <option value=1>Fertilizers</option>
-                          <option value=2>Pesticides</option>
-                          <option value=3>Tools</option>
-                          <option value=4>Seeds</option>
-                          <option value=6>Vehicles</option>
-                          <option value=5>Other</option>
-                        </select>
-                      </div>
-                    <div class="row justify-content-center">
-                        <!-- <div class="form-group col-sm-6"><p class="submit"><input type="submit" name="submit" value="Register" required></p> </div> -->
-                        <div class="form-group col-sm-6"><button class="submit btn-block btn-success" type="submit" name="submit" value="Submit" required> Submit</button> </div>
-                        <div class="form-group col-sm-6"><button class="submit btn-block btn-secondary" onClick="location.href = '/api/adminControl/'">Cancel</button></div>
-                        </div>
-                        </div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-12 flex-column d-flex"> <label
+                        class="form-control-label px-3">Image<span class="text-danger"> *</span></label> <input
+                        type="file" name="image" required></div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-12 flex-column d-flex"> <label
+                        class="form-control-label px-3">Description<span class="text-danger"> *</span></label> <input
+                        type="text" name="description" placeholder="Description" required></p>
                     </div>
-                </form>
-            </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <label class="form-control-label px-3">Catagory:</label>
+                    <select name="category_id" id="cid">
+                      <option value=1>Fertilizers</option>
+                      <option value=2>Pesticides</option>
+                      <option value=3>Tools</option>
+                      <option value=4>Seeds</option>
+                      <option value=6>Vehicles</option>
+                      <option value=5>Other</option>
+                    </select>
+                  </div>
+                  <div class="row justify-content-center">
+                    <!-- <div class="form-group col-sm-6"><p class="submit"><input type="submit" name="submit" value="Register" required></p> </div> -->
+                    <div class="form-group col-sm-6"><button class="submit btn-block btn-success" type="submit"
+                        name="submit" value="Submit" required> Submit</button> </div>
+                    <div class="form-group col-sm-6"><button class="submit btn-block btn-secondary"
+                        onClick="location.href = '/api/adminControl/'">Cancel</button></div>
+                  </div>
+              </div>
         </div>
-</section>
-<div id="footer"></div>
-        <footer>
-          <div style="text-align: center; margin-top: 2%;">
-            <p>Copyright ©2023 Agro-Point</p>
-          </div>
-        </footer>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div id="footer"></div>
+  <footer>
+    <div style="text-align: center; margin-top: 2%;">
+      <p>Copyright ©2023 Agro-Point</p>
+    </div>
+  </footer>
   </div>
 </body>

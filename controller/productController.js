@@ -37,7 +37,7 @@ const getProduct = asynchandler(async (req, res) => {
         const product = results1[0]
         product.userName = req.session.user.name
 
-        const sql = `select c.comment, c.rating, c.createdAt, u.name from comments c, user u  
+        const sql = `select c.comment, c.rating, c.createdAt, u.name, c.cid from comments c, user u  
             where c.p_id = ${req.params.pid} and c.user_id = u.uid and c.user_id != ${req.session.user.uid}`
 
         connection.query(sql, async (err, results2, field) => {
@@ -56,7 +56,7 @@ const getProduct = asynchandler(async (req, res) => {
                 product.commentStatus = 'Other\'s Reviews:'
             product.comments = results2
 
-            const sql = `select comment, rating, createdAt from comments 
+            const sql = `select cid, comment, rating, createdAt from comments 
             where p_id = ${req.params.pid} and user_id = ${req.session.user.uid}`
             connection.query(sql, async (err, results3, field) => {
                 if (err) {

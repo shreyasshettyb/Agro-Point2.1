@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="/css/register_style.css">
 <style>
   body {
-    /* height: 850px; */
     min-height: 100vh;
     overflow: auto;
   }
@@ -34,24 +33,6 @@
   </div>
 
 </nav>
-<!--   
-<div id="profile">
-    <h3>Update Profile</h3>
-    <form method="post" action="/api/profile">
-        <% error.forEach((item) => { %>
-          <h5 style="color: red"><%= item %></h5>
-          <% });%>
-        <p><input type="text" name="name" placeholder="Name" value="<%= profile.name %>" required></p>
-        
-        <p><input type="password" name="oldPassword" placeholder="Enter Previous Password" required></p>
-        <p><input type="password" name="newPassword1" placeholder="New Password" required></p>
-        <p><input type="password" name="newPassword2" placeholder="Confirm New Password" required></p>
-
-        <p class="submit"><input type="submit" name="submit" value="Update" required></p>
-      </form>
-</div> -->
-
-
 
 <body>
 
@@ -68,10 +49,16 @@
               <div class="card">
                 <form method="post" action="/api/profile"">
                   <div class=" row justify-content-between text-left">
-                  <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Name<span
-                        class="text-danger"> *</span></label> <input type="text" name="name" placeholder="Name"
-                      value="<%= profile.name %>" required> </div>
-              </div>
+                    <div class="form-group col-sm-12 flex-column d-flex"> 
+                      <label class="form-control-label px-3">Username<span
+                          class="text-danger"> *</span>
+                      </label> 
+                      <input type="text" name="name" placeholder="Name" 
+                        title="Username should start with alphabet can have alphabets, digits, '@' or '_'"
+                        pattern="[A-Za-z]+[A-Za-z@_0-9]*" 
+                        value="<%= profile.name %>" required> 
+                    </div>
+                  </div>
               <div class="row justify-content-between text-left">
                 <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Current
                     Password<span class="text-danger"> *</span></label> <input type="password" name="oldPassword"

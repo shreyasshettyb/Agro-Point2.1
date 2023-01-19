@@ -14,9 +14,6 @@
         min-height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
-        /* height: auto;
-        background-color: #80FF72;
-        background-image: none; */
     }
     .card{
       margin-bottom: 0;
@@ -124,9 +121,14 @@
                                     <div class="text-left comment">
                                         <p style="font-style:italic"><%= comment.comment %></p>
                                         <h6>Reviewed At: <%= comment.createdAt %></h6>
-                                        <button class="col-6 text-center btn-block btn-danger mt-4 ml-auto" onclick="location.href = '/api/comment/deleteComment/<%= pid %>';">
-                                            Delete
-                                        </button>
+                                        <div class="row justify-content-between">
+                                            <button class="col-4 text-center btn-block btn-success mt-4 mr-auto" onclick="location.href = '/api/comment/updateComment/<%= pid %>';">
+                                                Update
+                                            </button>
+                                            <button class="col-4 text-center btn-block btn-danger mt-4 ml-auto" onclick="location.href = '/api/comment/deleteComment/<%= pid %>';">
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div> 
                                 <hr class="hr" />   

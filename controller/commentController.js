@@ -103,7 +103,96 @@ function updateRating(req, res){
     })
 }
 
+const updateComment = asynchandler(async (req, res) => {
+
+    const error = []
+        
+    if(req.params.pid == null){
+        error.push('Product id is required to update comment.. Try LogIn')
+        req.session.destroy(() => {
+            return res.status(400).render('login', {
+                error: error
+            })
+        })
+    }
+    
+    const pid = req.params.pid
+
+    if(req.session.user.type !== 'user'){
+        error.push('No Access')
+        req.session.destroy(() => {
+            return res.status(401).render('login', {
+                error: error
+            })
+        })
+    }
+
+    connection.query(`select cid from comments where p_id = ${pid} and user_id = ${req.session.user.uid}`, 
+        async (err, results, field) => {
+        if (err) {
+            error.push('Server Error')
+            req.session.destroy(() => {
+                return res.status(500).render('login', {
+                    error: error
+                })
+            })  
+        } else {
+            if(results.length == 0) {
+                error.push("User has no privileges to update a comment")
+                req.session.destroy(() => {
+                    return res.status(500).render('login', {
+                        error: error
+                    })
+                })
+            }
+            else{
+                connection.query(`update comments set comment = "${req.body.comment}", rating = ${req.body.rating} where cid = ${results[0].cid}`,
+                async (err, results1, field) => {
+                    if (err) {
+                        error.push('Server Error')
+                        req.session.destroy(() => {
+                            return res.status(500).render('login', {
+                                error: error
+                            })
+                        })
+                        } else {
+                            updateRating(req, res)
+                        }
+                    })
+                }
+            }
+        })
+})
+
+
+const getUpdateForm = asynchandler(async (req, res) => {
+
+    const error = []
+    const pid = req.params.pid
+    const uid = req.session.user.uid
+
+    connection.query(`select comment, rating from comments where p_id = ${pid} and user_id = ${uid}`,
+        async (err, results, field) => {
+        if (err) {  
+            error.push(err.message)
+            return res.status(500).render('login', { error: error })
+        }
+        if (results.length == 0) {
+            error.push('Unauthorized access... Try LogIn')
+            return res.status(400).render('login', { error: error })
+        }
+        const comment = {
+            comment: results[0].comment,
+            rating: results[0].rating
+        }
+        
+        res.status(200).render('updateComment', { pid: pid, error: [], comment: comment})
+    })
+})
+
 module.exports = {
     addComment,
-    deleteComment
+    deleteComment,
+    updateComment,
+    getUpdateForm
 }

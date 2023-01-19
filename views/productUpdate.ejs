@@ -43,7 +43,7 @@
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label
                         class="form-control-label px-3">Name<span class="text-danger"> *</span></label> <input
-                        type="text" name="name" placeholder="Name" value="<%= product.name %>" pattern="" required> </div>
+                        type="text" name="name" placeholder="Name" value="<%= product.name %>"  required> </div>
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Release
                         Year<span class="text-danger"> *</span></label> <input type="number" name="release_year"
                         placeholder="Release Year" value="<%= product.release_year %>" required></p>
@@ -51,7 +51,7 @@
                   </div>
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Product
-                        Link<span class="text-danger"> *</span></label> <input type="text" name="official_link"
+                        Link<span class="text-danger"> *</span></label> <input type="url" name="official_link"
                         placeholder="Official Link" value="<%= product.official_link %>" required></p>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
                 </form>
               </div>
               <div class="row justify-content-center">
-                <form action="/api/adminControl/">
+                <form action="/api/adminControl/<%= category_id %>">
                   <div class=" form-group col-sm-12 mr-5"><button class="btn-block btn-secondary"
                       class="submit btn-block btn-danger" type="submit" name="submit">Cancel</button></div>
                 </form>
@@ -95,11 +95,4 @@
       </div>
     </div>
   </section>
-  <div id="footer"></div>
-  <footer>
-    <div style="text-align: center; margin-top: 2%;">
-      <p>Copyright ©2023 Agro-Point</p>
-    </div>
-  </footer>
-  </div>
 </body>

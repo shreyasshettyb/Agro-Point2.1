@@ -23,24 +23,38 @@
 
 </nav>
 
-<body>
     <div id="products">
         <br>
         <h3>PRODUCTS</h3>
         <br>
         <div class="container table-responsive">
-            <div style="margin-right: 20px;">
-                <form method="GET" action="/api/adminControl/add" id="addProductForm">
-                    <button class="submi btn btn-success btn-lg float-right" type="submit" name="submit"
-                        value="Add Product"><i class="fa fa-plus"></i></button>
-                </form>
+            <div class="row justify-content-left">
+                <label class="form-control-label px-3">Catagory:</label>
+                    <select value="this.options" name="category_id" id="cid" onchange="this.options[this.selectedIndex].value && (location.href = this.options[this.selectedIndex].value);">
+                    <option value="">Select Category</option>
+                    <option value=1>Fertilizers</option>
+                    <option value=2>Pesticides</option>
+                    <option value=3>Tools</option>
+                    <option value=4>Seeds</option>
+                    <option value=6>Vehicles</option>
+                    <option value=7>Irrigation Needs</option>
+                    <option value=5>Other</option>
+                    </select>
+            </div>
+            <div class="row justify-content-center"><h4><%= category_name %></h4></div>
+            <div class="justify-content-right">
+                <div style="margin-right: 20px;">
+                    <form method="get" action="/api/adminControl/add" id="addProductForm">
+                        <button class="submi btn btn-success btn-lg float-right" type="submit" name="submit"
+                            value="Add Product"><i class="fa fa-plus"></i></button>
+                    </form>
+                </div>
             </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Image</th>
                         <th scope="col">Product Name</th>
-                        <th scope="col">Category</th>
                         <th scope="col">Release Year</th>
                         <th scope="col">Official Link</th>
                         <th scope="col">Rating</th>
@@ -56,9 +70,6 @@
                                 <td><img src="/images/<%= product.img %>" width="50px" height="50px" alt=""></td>
                                 <td>
                                     <%= product.name%>
-                                </td>
-                                <td>
-                                    <%= product.category_name %>
                                 </td>
                                 <td>
                                     <%= product.release_year%>
@@ -91,11 +102,3 @@
             </table>
         </div>
     </div>
-    <div id="footer"></div>
-    <footer>
-        <div style="text-align: center; margin-top: 2%;">
-            <p>Copyright ©2023 Agro-Point</p>
-        </div>
-    </footer>
-    </div>
-</body>

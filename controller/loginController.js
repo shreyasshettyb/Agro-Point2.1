@@ -28,7 +28,7 @@ const validateProfile = asynchandler(async (req, res) => {
                 }
                 if(req.body.type === 'org_user'){
                     req.session.user = {type: req.body.type, o_uid: results[0].o_uid, name: results[0].name}
-                    res.redirect('/api/adminControl')
+                    res.redirect('/api/adminControl/1')
                 }
             } else {
                 error.push('Entered credentials do not match')

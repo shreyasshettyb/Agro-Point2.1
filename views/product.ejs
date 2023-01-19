@@ -85,15 +85,15 @@
                                             <div class="row justify-content-center">
                                                     <h4 class="mr-3">Your Rating:</h4>
                                                     <div class="star-rating">
-                                                        <input type="radio" id="5-stars" name="rating" value="5" />
+                                                        <input type="radio" id="5-stars" name="rating" value="5" required/>
                                                         <label for="5-stars" class="fa fa-star"></label>
-                                                        <input type="radio" id="4-stars" name="rating" value="4" />
+                                                        <input type="radio" id="4-stars" name="rating" value="4" required/>
                                                         <label for="4-stars" class="fa fa-star"></label>
-                                                        <input type="radio" id="3-stars" name="rating" value="3" />
+                                                        <input type="radio" id="3-stars" name="rating" value="3" required/>
                                                         <label for="3-stars" class="fa fa-star"></label>
-                                                        <input type="radio" id="2-stars" name="rating" value="2" />
+                                                        <input type="radio" id="2-stars" name="rating" value="2" required/>
                                                         <label for="2-stars" class="fa fa-star"></label>
-                                                        <input type="radio" id="1-star" name="rating" value="1" />
+                                                        <input type="radio" id="1-star" name="rating" value="1" required/>
                                                         <label for="1-star" class="fa fa-star"></label>
                                                       </div>        
                                             </div>
@@ -112,7 +112,7 @@
                                                 <label class="form-control-label px-3"><h4 style="display:inline;background-color:rgb(93, 243, 73)">Rating:</h4>
                                                 <p>
                                                     <% for (var i = 0; i < 5; i++) { %>
-                                                        <span class="fa fa-star<%= (i < rating - 0.5)? '' : '-o'%>"></span>
+                                                        <span class="fa fa-star<%= (i < comment.rating - 0.5)? '' : '-o'%>"></span>
                                                     <% } %>
                                                 </p>
                                             </div>    
@@ -151,9 +151,9 @@
                                             <label class="form-control-label col-sm-4 ml-auto px-3"><h4 style="display:inline;background-color:yellow">Rating:</h4>
                                             <p>
                                                 <% for (var i = 0; i < 5; i++) { %>
-                                                    <span class="fa fa-star yellow-color<%= (i < rating - 0.5)? '' : '-o'%>" ></span>
+                                                    <span class="fa fa-star<%= (i < comment.rating - 0.5)? '' : '-o'%>"></span>
                                                 <% } %>
-                                            </p>   
+                                            </p>
                                     </div>
                                 <div class="text-left comment">
                                     <div class="form-group col-sm-4 ">
@@ -174,12 +174,5 @@
 
                     </div>
                 </div>
-    <div id="footer"></div>
-        <footer>
-          <div style="text-align: center;">
-            <p>Copyright ©2023 Agro-Point</p>
-          </div>
-        </footer>
-    </div>
 </body>
 </html>

@@ -11,7 +11,7 @@ const getinfo = asynchandler(async (req, res) => {
     const adminName = req.session.user.name
 
     const sql = `select p.pid, p.name, p.release_year, p.official_link, p.rating, p.description, c.category_name, p.img
-                from category c, products p where p.category_id = c.category_id`
+                from category c, products p where p.category_id = c.category_id and c.category_id = ${req.params.category_id}`
     connection.query(sql, async (err, results1, field) => {
         if (err) {
             error.push('Server Error')
@@ -26,7 +26,9 @@ const getinfo = asynchandler(async (req, res) => {
             }
         }
 
-        return res.status(200).render('adminControl', { admin: {name: adminName, o_uid: req.session.user.o_uid}, products: results1})
+        const category_name = results1[0].category_name
+
+        return res.status(200).render('adminControl', { admin: {name: adminName, o_uid: req.session.user.o_uid}, category_name: category_name, products: results1})
     })
 
 })
@@ -89,7 +91,7 @@ const addProduct = asynchandler(async (req, res) => {
             else{
                 image.mv(path.dirname(__dirname) + '/public/images/' + image.name)
                 error.push('Product Creation Successful.. You can create another product or Press cancel to go back')
-                return res.status(200).render('productCreate', { o_uid: o_uid, error: error })
+                return res.status(200).render('productCreate', { o_uid: o_uid, category_id: req.body.category_id, error: error })
             }
         })
     })
@@ -126,17 +128,17 @@ const updateProduct = asynchandler(async (req, res) => {
             async (err, results2, field) => {
                 if (err) {
                     error.push('Server Error.. Try again.. You can go Back')
-                    return res.status(500).render('productOperationInfo', { o_uid: o_uid, error: error})
+                    return res.status(500).render('productOperationInfo', { o_uid: o_uid, category_id: 1, error: error})
                 } else {
                     connection.query(`select * from products where pid = ${pid}`,
                     async (err, results3, field) => {
                             if(err){
                                 error.push('Server Error while retrieving.. But the product Updated... You can go Back')
-                                return res.status(500).render('productOperationInfo', { o_uid: o_uid, error: error})
+                                return res.status(500).render('productOperationInfo', { o_uid: o_uid, category_id: 1, error: error})
                             }
                             const product = results3[0]
                             error.push('Product Updated Successfully, You can Update Once again or Press Cancel to go back')
-                            return res.status(200).render('productUpdate', { o_uid: o_uid, pid: pid, error: error, product: product})
+                            return res.status(200).render('productUpdate', { o_uid: o_uid, category_id: results3[0].category_id, pid: pid, error: error, product: product})
                     })
                 }
             })
@@ -176,10 +178,10 @@ const deleteProduct = asynchandler(async (req, res) => {
         const image = results[0].img
 
         connection.query(`delete from products where pid = ${pid}`,
-            async (err, results, field) => {
+            async (err, results1, field) => {
             if (err) {
                 error.push('Product Deletion failed..')
-                return res.status(500).render('productOperationInfo', { o_uid: o_uid, error: error })
+                return res.status(500).render('productOperationInfo', { o_uid: o_uid, category_id: results[0].category_id, error: error })
             } else {
                 try{
                     fs.unlinkSync(path.dirname(__dirname) + '\\public\\images\\' + image)
@@ -193,7 +195,7 @@ const deleteProduct = asynchandler(async (req, res) => {
                     })
                 }
                 error.push('Product deleted successfully')
-                return res.status(200).render('productOperationInfo', { o_uid: o_uid, error: error })
+                return res.status(200).render('productOperationInfo', { o_uid: o_uid, category_id: results[0].category_id, error: error })
             }
         })
     })
@@ -208,11 +210,11 @@ const getUpdateForm = asynchandler(async (req, res) => {
         async (err, results, field) => {
         if (err) {  
             error.push(err.message)
-            return res.status(500).render('productOperationInfo', { o_uid: o_uid, error: error })
+            return res.status(500).render('productOperationInfo', { o_uid: o_uid, category_id: 1, error: error })
         }
         if (results.length == 0) {
             error.push('Product Not Found')
-            return res.status(400).render('productOperationInfo', { o_uid: o_uid, error: error })
+            return res.status(400).render('productOperationInfo', { o_uid: o_uid, category_id: 1, error: error })
         }
         const product = { 
             name: results[0].name,
@@ -221,7 +223,7 @@ const getUpdateForm = asynchandler(async (req, res) => {
             description: results[0].description
         }
         
-        res.status(200).render('productUpdate', { o_uid: o_uid, pid: pid, error: [], product: product})
+        res.status(200).render('productUpdate', { o_uid: o_uid, category_id: results[0].category_id, pid: pid, error: [], product: product})
     })
 })
 
@@ -244,7 +246,7 @@ const getCreateForm = asynchandler(async (req, res) => {
             })
         }
 
-        res.status(200).render('productCreate', { o_uid: o_uid, error : [] })
+        res.status(200).render('productCreate', { o_uid: o_uid, category_id: 1, error : [] })
     })
 
 })

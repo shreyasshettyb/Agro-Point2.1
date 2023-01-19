@@ -8,6 +8,10 @@ const addComment = asynchandler(async (req, res) => {
     const error = []
     const pid = req.params.pid
 
+    if(req.body.rating === null){
+
+    }
+
     connection.query(`select * from comments where user_id = ${req.session.user.uid} and p_id = ${pid}`, 
     async (err, results, field) => {
         if (err) {
@@ -88,7 +92,7 @@ const deleteComment = asynchandler(async (req, res) => {
 
 function updateRating(req, res){
     const error = []
-    connection.query(`update products set rating = (select avg(rating) from comments) where pid = ${req.params.pid}`,
+    connection.query(`update products p set p.rating = (select avg(c.rating) from comments c where c.p_id = ${req.params.pid}) where p.pid = ${req.params.pid}`,
     async (err, results, field) => {
         if (err) {
             error.push('Server Error while reloading.. Try LogIn')

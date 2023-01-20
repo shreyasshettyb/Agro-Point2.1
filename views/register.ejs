@@ -38,7 +38,7 @@
               </div>
               <div class="row justify-content-center text-left">
                 <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span
-                      class="text-danger"> *</span></label> <input type="email" name="email" placeholder="Email" value="<%= email %>"
+                      class="text-danger"> *</span></label> <input type="text" name="email" placeholder="Email" pattern="[a-z]+[-0-9a-zA-Z.+_]*@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}" value="<%= email %>"
                     required> 
                 </div>
               </div>
@@ -64,7 +64,7 @@
             </form>
           </div>
           <div class="login">
-            <h5>Have a account? <a href="login">Login Here</a></h5>
+            <h5>Have a account? <a href="/api/login">Login Here</a></h5>
           </div>
     </div>
   </div>

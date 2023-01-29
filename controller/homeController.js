@@ -1,5 +1,4 @@
 const asynchandler = require('express-async-handler')
-const Joi = require('joi')
 const connection = require('../config/db')
 
 const getHome = asynchandler(async (req, res) => {

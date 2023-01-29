@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server"
+    "server": "nodemon server.js"
   },
   "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
@@ -19,7 +20,7 @@
     "express-mysql-session": "^2.1.8",
     "express-session": "^1.17.1",
     "fs": "^0.0.1-security",
-    "joi": "^17.7.0",
+    "googleapis": "^105.0.0",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.0.1",

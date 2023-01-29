@@ -1,6 +1,5 @@
 
 const asynchandler = require('express-async-handler')
-const Joi = require('joi')
 const path = require('path')
 const connection = require('../config/db')
 const fs = require('fs')

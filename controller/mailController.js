@@ -1,6 +1,5 @@
 const asynchandler = require('express-async-handler')
-const Joi = require('joi')
-const transporter = require('../config/mailConfig')
+const { transporter } = require('../config/mailConfig')
 const connection = require('../config/db')
 const { decrypt } = require('../config/crypto')
 
@@ -31,8 +30,7 @@ function sendMail(req, res, user, error){
             from: process.env.email,
             to: req.body.email,
             subject: 'Password for login to Agro-Point',
-            text: `Your Agro-Point Account Password : ${user[0].password} 
-                   Don't share this with anyone`,
+            text: `Your Agro-Point Account Password : ${user[0].password} Don't share this with anyone...`,
         }
 
         transporter.sendMail(mailOptions, (err, info) =>{
@@ -43,8 +41,6 @@ function sendMail(req, res, user, error){
             error.push('See for mail from us...click LOGIN to go to login page')
             res.status(200).render('forgotPassword', { error: error })
         })
-
-
     }
 
     catch(err){

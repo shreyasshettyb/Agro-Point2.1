@@ -1,6 +1,5 @@
 
 const asynchandler = require('express-async-handler')
-const Joi = require('joi')
 const connection = require('../config/db')
 
 const getProduct = asynchandler(async (req, res) => {

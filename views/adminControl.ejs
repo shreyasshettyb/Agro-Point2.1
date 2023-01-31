@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/profile.css">
-<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+<link href="/css/gfont.css" rel="stylesheet">
 <title>Agro-Point</title>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,7 +31,7 @@
             <div class="row justify-content-left">
                 <label class="form-control-label px-3">Catagory:</label>
                     <select value="this.options" name="category_id" id="cid" onchange="this.options[this.selectedIndex].value && (location.href = this.options[this.selectedIndex].value);">
-                    <option value="">Select Category</option>
+                    <option value=""><%= category_name %></option>
                     <option value=1>Fertilizers</option>
                     <option value=2>Pesticides</option>
                     <option value=3>Tools</option>

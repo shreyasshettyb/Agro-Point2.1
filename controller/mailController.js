@@ -35,7 +35,7 @@ function sendMail(req, res, user, error){
 
         transporter.sendMail(mailOptions, (err, info) =>{
             if(err){
-                error.push("Server Error")
+                error.push(err.message)
                 return res.status(500).render('forgotPassword', { error: error })
             }
             error.push('See for mail from us...click LOGIN to go to login page')
